@@ -1,0 +1,82 @@
+{% block header %}
+	<header class="header" id="header">
+		<div class="header__top">
+			<div class="container">
+				<div class="header__top-inner">
+					<a href="#" class="header__location">
+						{% include "/assets/svg/location.svg" %}
+						Волгоградская область 
+					</a>
+					<ul class="header__links">
+						<li><a href="#">Тендеры</a></li>
+						<li><a href="#">База подрядчиков</a></li>
+						<li>
+							<div class="g-select _select">
+								<input type="hidden" class="_selected-value" />
+								<div class="g-select__selected" onclick="o2.gSelect.toggle(this)">
+									<div class="g-select__selected-name _selected-text">Другие сервисы</div>
+									<div class="g-select__arrow">
+										{% include "/assets/svg/arrow-down.svg" %}
+									</div>
+								</div>
+								<div class="g-select__error">Error: обязательное поле</div>
+								<div class="g-select__list _options">
+									<ul class="g-select__items">
+										<li data-value="code-Australia" class="g-select__item _option g-select__item--active" onclick="o2.gSelect.selecttItem(this)">
+											<a href="">Сервис</a>
+										</li>
+										<li data-value="code-Argentina" class="g-select__item _option" onclick="o2.gSelect.selecttItem(this)">
+											<a href="">Сервис</a>
+										</li>
+										<li data-value="code-Canada" class="g-select__item _option" onclick="o2.gSelect.selecttItem(this)">
+											<a href="">Сервис</a>
+										</li>
+										<li data-value="code-New Zealand" class="g-select__item _option" onclick="o2.gSelect.selecttItem(this)">
+											<a href="">Сервис</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="header__content">
+			<div class="container">
+				<div class="header__content-inner">
+					<a href="/pages/index.html" class="header__logo">
+						<img src="img/logo.png" alt="">
+					</a>
+					<a href="" class="header__catalog-btn" @click.prevent="cat">
+						<div class="header__catalog-link-burger">
+							<div></div>
+							<div></div>
+							<div></div>
+						</div>
+						Каталог
+					</a>
+					<div class="header__search">
+						<input type="text" placeholder="Хочу найти..." v-model="search">
+
+						{% include "/assets/svg/header-search.svg" %}
+
+						<ul class="header__search-result" v-if="search">
+							<li v-if="!filteredTodos[0]" style="margin-bottom: 0">Not Found</li>
+							<li v-for="item in filteredTodos" :key="item.id">
+								<a href="">{item.title}</a>
+							</li>	
+						</ul>
+					</div>
+					<a href="" class="header__content-list">
+						<div class="header__content-list-icon">
+							{% include "/assets/svg/list.svg" %}
+						</div>
+						Список
+					</a>
+					<a href="" class="header__user">A</a>
+				</div>
+			</div>
+		</div>
+	</header>
+{% endblock %}
